@@ -1,0 +1,102 @@
+<section id="main-content" class=" ">
+    <section class="wrapper" style='margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <div class="page-title">
+                <div class="pull-left">
+                    <h1 class="title">Camion</h1></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-12">
+                <section class="box ">
+                    <header class="panel_header">
+                        <div class="pull-left title">
+                            <div class="col-md-3"> 
+                                <button class="btn btn-primary btn-corner" type="button" id="btn-modal-camion">
+                                    <i class="box_setting fa fa-plus"></i>&nbsp;&nbsp;Agregar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="actions panel_actions pull-right">
+                            <i class="box_toggle fa fa-chevron-down"></i>
+                        </div>
+                    </header>
+                    <div class="content-body">    
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <table id="datatable-camion" class="table table-striped dt-responsive display">
+                                    <thead >
+                                        <tr >
+                                            <th>Nº</th>                                                   
+                                            <th>PLACA</th>
+                                            <th>COLOR</th>
+                                            <th>ESTADO</th>
+                                            <th>OPCIONES</th> 
+                                        </tr>
+                                    </thead>                                          
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>               
+                    </div>
+                </section>
+            </div>
+        </section>
+    </section>  
+</div>
+
+<div class="modal" id="modal-camion" >
+    <div class="modal-dialog animated bounceInDown">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 align="center" class="modal-title title-camion"><b>REGISTRAR CAMION</b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <form id="form-camion" onsubmit="return false">
+                            <div class="row">   
+                                <div class="col-xs-6"> 
+                                    <div class="form-group">
+                                    <label class="form-label">Placa</label>   
+                                        <div class="controls">
+                                            <i class=""></i>
+                                            <input type="text" class="form-control" id="txt-placa">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                    <label class="form-label">Color</label>   
+                                        <div class="controls">
+                                            <i class=""></i>
+                                            <input type="text" class="form-control" id="txt-color">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                        <label class="form-label">Estado</label>   
+                                        <div class="controls">
+                                           <input id="chck-estado-camion" type="checkbox" checked data-on-text="Yes">
+                                        </div>
+                                    </div>                                           
+                              </div>      
+                            </div>                           
+                            <div class="modal-footer" >
+                                <button type="submit" class="btn btn-success" id="btn-registrar-camion">Aceptar</button>
+                                <button type="button" class="btn btn-success" id="btn-editar-camion">Aceptar</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-default">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

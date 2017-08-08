@@ -1,0 +1,259 @@
+<section id="main-content" class=" ">
+    <section class="wrapper" id="sct-tabla-personal" style='margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <div class="page-title">
+                <div class="pull-left">
+                    <h1 class="title">PERSONAL</h1></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-12">
+                <section class="box ">
+                    <header class="panel_header">
+                        <div class="pull-left title">
+                            <div class="col-md-3"> 
+                                <button class="btn btn-primary btn-corner" type="button" id="btn-sct-personal">
+                                    <i class="box_setting fa fa-plus"></i>&nbsp;&nbsp;Agregar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="actions panel_actions pull-right">
+                            <i class="box_toggle fa fa-chevron-down"></i>
+                        </div>
+                    </header>
+                    <div class="content-body">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <table id="datatable-personal" class="table table-striped dt-responsive display">
+                                    <thead>
+                                        <tr>
+                                            <th>Nº</th> 
+                                            <th>NOMBRE Y APELLIDOS</th>
+                                            <th>DNI</th>
+                                            <th>TELÉFONO</th>
+                                            <th>DIRECCIÓN</th>
+                                            <th>FECHA</th>
+                                            <th>ESTADO</th>
+                                            <th>OPCIÓN</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <section class="wrapper" id="sct-personal" style='margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+            <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                <div class="page-title">
+                    <div class="pull-left">
+                        <h1 class="title-personal title">REGISTRO DE PERSONAL</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-12">
+                <section class="box">
+                    <form id="form-personal" onsubmit="return false">
+                        <header class="panel_header">
+                            <div class="title pull-left">
+                                <button class="btn btn-primary btn-corner" id="btn-registrar-personal" type="submit">
+                                    <i class="box_setting fa fa-save"></i>&nbsp;&nbsp;
+                                    Guardar
+                                </button>
+                                <button class="btn btn-primary btn-corner" id="btn-editar-personal"type="button">
+                                    <i class="box_setting fa fa-save"></i>&nbsp;&nbsp;
+                                    Guardar
+                                </button>
+                                <button class="btn btn-default btn-corner" type="button" id="btn-sct-volver-personal">
+                                    <i class="box_setting fa fa-undo"></i>&nbsp;&nbsp;
+                                    Volver
+                                </button> 
+                            </div>
+                            <div class="actions panel_actions pull-right">
+                                <i class="box_toggle fa fa-chevron-down"></i>
+                            </div>
+                        </header>
+                        <div class="content-body">    
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="form-label" >Nombres</label>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" id="txt-nombres">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Apellidos</label>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" id="txt-apellidos">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label class="form-label">DNI</label>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" id="txt-dni">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label class="form-label">Teléfono</label>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" id="txt-telefono">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label class="form-label">Cargo</label>&nbsp;&nbsp;
+                                                <a href="javascript:void(0);">
+                                                    <button type="button" id="btn-modal-cargo" class="btn btn-primary btn-round" style="margin-top:-11px;width:30px;" rel="tooltip" data-animate=" animated bounce" data-toggle="tooltip" data-original-title="Agregar cargo" data-placement="top">
+                                                        <i class="fa fa-plus" style="margin-left:-5px;"></i>
+                                                    </button>
+                                                </a>
+                                                <div class="controls">
+                                                    <input type="text" class="list list-cargos form-control" placeholder="" >
+                                                    <input type="hidden" id="txt-id-cargo" >
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label class="form-label">Cargo</label>
+                                                <div class="controls">
+                                                    <div class="form-group">
+                                                        <select class="cbo-cargo">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                </div>                                              
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label class="form-label">Departamento</label>
+                                                <div class="controls">
+                                                    <div class="form-group">
+                                                        <select class="cbo-departamento">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label class="form-label">Provincia</label>
+                                                <div class="controls">
+                                                    <select class="cbo-provincia">
+                                                        <option></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label class="form-label">Distrito</label>
+                                                <div class="controls">
+                                                    <select class="cbo-distrito">
+                                                        <option></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Dirección</label>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" id="txt-direccion">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                        <div class="col-sm-6 col-lg-4">
+                                        <div class="form-group">
+                                                <label class="form-label">Estado</label>   
+                                                <div class="controls">
+                                                   <input id="chck-estado-personal" type="checkbox" checked data-on-text="Yes">
+                                                </div>
+                                            </div>                                           
+                                      </div>      
+                                    </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </section>
+    </section>  
+</div>
+<div class="modal fade" id="modal-cargo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 align="center" class="modal-title"><b>Registrar cargo</b></h4>
+            </div>
+            <div class="modal-body">
+                <form id="form-cargo"  onsubmit="return false">
+                    <div class="row">
+                    <div class="col-xs-4">
+                            <div class="form-group">
+                                <div class="controls">                                    
+                                    <input type="hidden" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="form-label">Nombre de Cargo</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control" id="txt-nombre-cargo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">                                
+                                <div class="controls">
+                                    <input type="hidden" class="form-control">
+                                </div>
+                            </div>
+                        </div>                                                         
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="form-label">Observaciones</label>
+                                <div class="controls">                                    
+                                     <textarea class="form-control" id="txt-observaciones"></textarea> 
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="modal-footer" >
+                        <button type="submit" class="btn btn-success">Aceptar</button>
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

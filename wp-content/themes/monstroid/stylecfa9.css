@@ -1,0 +1,33 @@
+/*
+Theme Name:  Monstroid
+Theme URI:   http://www.templatemonster.com/wordpress-themes/monstroid/
+Description: Monstroid is powered by the latest Cherry Framework 4 that ensures easy and worry-free installation and customization. With over 30 inbuilt premium extensions, you can get any kind of functionality required for a specific project. Thanks to the brand new backup options, you can restore the theme any time you need.
+Author:      Monstroid Team
+Author URI:  http://www.templatemonster.com
+Version:     1.1.2
+License:     GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Tags:        fixed-layout, fluid-layout, responsive-layout, left-sidebar, right-sidebar, custom-menu, featured-images, full-width-template, post-formats, sticky-post, theme-options, translation-ready
+Text Domain: monstroid
+Template:    cherryframework4
+*/
+
+/* Theme customization starts here
+-------------------------------------------------------------- */
+@import url(https://fonts.googleapis.com/css?family=Catamaran:400,700,300);
+html, p, strong, b, textarea, input, h1, h2, h4, h5, h6, div{
+  font-family: Catamaran !important;
+}
+.footer-top.static-area, .site-header, #menu-primary-items.menu-items:not(.mega-menu-direction-vertical) .before-menu, #menu-primary-items.menu-items:not(.mega-menu-direction-vertical) .after-menu, #menu-primary-items.menu-items:not(.mega-menu-direction-vertical) #magic-line-left, #menu-primary-items.menu-items:not(.mega-menu-direction-vertical) #magic-line-right, .menu-items>.menu-item>a:before{
+  background: #DBE283 !important;
+  color: #000 !important
+}
+.site-header a, .footer-top.static-area a, .footer-top.static-area h1, .footer-top.static-area h2, .footer-top.static-area h3, .footer-top.static-area h4, .footer-top.static-area h5, .footer-top.static-area h6{
+  color: #000 !important
+}
+.site-description{
+display: none
+}
+.footer-top.static-area .static-footer-sidebars > div > div .widget:before{
+background: #DBE283 !important
+}
