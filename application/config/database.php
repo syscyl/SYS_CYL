@@ -93,7 +93,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'db_cyl',
+	'database' => 'cyltrans_db',
 	'dbdriver' => 'mysqli',
 	
 	'dbprefix' => '',
