@@ -1,0 +1,22 @@
+Product Backlog:
+
+Sprint Planning:
+
+En Proceso:
+
+En Pruebas:
+
+  CYL-1 Módulo: Administrador de archivos:
+    CYL-1.1:CYL-1.1 Crear nuevo módulo "Administrador de archivos":
+      ✔ Agregar módulo **Administrador** de archivos" en la vista **menu-usuario.html** @new @low @started(17-08-10 20:17) @done (17-08-10 20:19) @lasted(0:02)
+      ✔ Agregar clase controlador **C_FileManager.php** y modelo **M_FileManager.php**@new @today @done (17-08-10 21:54)
+      ✔ Agregar vista **V_FileManager.php** y helper js **H_FileManager.js** @new @today @done (17-08-10 21:54)
+      ✔ Agregar vista **V_FileManager** (archivo .php y método) en el controlador **C_FileManager.php** @new @today @done (17-08-10 21:58)
+      ✔ Agregar enrutamiento de la vista **V_FileManager** a **FileManager** en **routes** @new @today @done (17-08-10 21:58)
+      ✔ Agregar maquetación en la vista **V_FileManager.php**@new @today @done (17-08-11 01:17)
+      ✔ Agregar una tabla con el nombre **file** en la **Base de datos** @new @today @done (17-08-11 01:31)
+      ✔ Agregar repositorio para los archivos dentro de la carpeta **assets/file** @new @today @done (17-08-11 01:32)
+
+Verificado:
+
+Implementado:

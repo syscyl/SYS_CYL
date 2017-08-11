@@ -138,3 +138,5 @@ $route['subir_imagen_perfil'] 	= 'usuario_controller/subir_imagen_perfil';
 $route['obtener_usuario'] 		= 'usuario_controller/obtener_usuario';
 $route['editar_usuario'] 		= 'usuario_controller/editar_usuario';
 /************************************************************************************************************************************************************************/
+//By xjeanxx 10/08/2017
+$route['FileManager']	=	'C_FileManager/V_FileManager';
