@@ -1,0 +1,66 @@
+Product Backlog:
+
+Sprint Planning:
+
+En Proceso:    
+
+En Pruebas:
+
+  CYL-1 Módulo: Administrador de archivos:
+    CYL-1.1 Crear nuevo módulo "Administrador de archivos":
+      ✔ Agregar módulo **Administrador** de archivos" en la vista **menu-usuario.html** @new @low @started(17-08-10 20:17) @done (17-08-10 20:19) @lasted(0:02)
+      ✔ Agregar clase controlador **C_FileManager.php** y modelo **M_FileManager.php**@new @today @done (17-08-10 21:54)
+      ✔ Agregar vista **V_FileManager.php** y helper js **H_FileManager.js** @new @today @done (17-08-10 21:54)
+      ✔ Agregar vista **V_FileManager** (archivo .php y método) en el controlador **C_FileManager.php** @new @today @done (17-08-10 21:58)
+      ✔ Agregar enrutamiento de la vista **V_FileManager** a **FileManager** en **routes** @new @today @done (17-08-10 21:58)
+      ✔ Agregar maquetación en la vista **V_FileManager.php**@new @today @done (17-08-11 01:17)
+      ✔ Agregar una tabla con el nombre **file** en la **Base de datos** @new @today @done (17-08-11 01:31)
+      ✔ Agregar repositorio para los archivos dentro de la carpeta **assets/file** @new @today @done (17-08-11 01:32)
+    CYL-1.2 Agregar archivos:
+      ✔ Agregar plugin Boostrap File en la vista V_FileManager.php @new @today @started(17-08-11 19:05) @done (17-08-11 19:06) @lasted(0:01)
+      ✔ Agregar plugin Boostrap File en H_FileManager.js @new @today @started(17-08-11 19:05) @done (17-08-11 19:11) @lasted(0:06)
+      ✔ Agregar enrutamiento de SetFileManager en routes @new @today @done (17-08-11 20:28)
+      ✔ Agregar función SetFileManager() en H_FileManager.js @new @today @started(17-08-11 19:16) @done (17-08-11 20:00) @lasted(0:44)
+      ✔ Agregar función SetFileManager() en el Controlador C_FileManager.php @new @today @started(17-08-11 20:00) @done (17-08-11 20:26) @lasted(0:26)
+      ✔ Agregar función SetFileManager() en el modelo M_FileManager.php @new @today @started(17-08-11 20:26) @done (17-08-11 20:28) @lasted(0:02)
+      ✔ Agregar SP_SetFileManager en la base de datos @new @today @done (17-08-11 21:08)
+    CYL-1.3 Listar archivos:
+     ✔ Agregar enrutamiento de GetFileManager en routes @new @today @done (17-08-11 21:25)
+     ✔ Agregar función GetFileManager() en H_FileManager.js para obtener la lista archivos en la tabla con opciones para descargar y eliminar @new @today @done (17-08-11 21:46)
+     ✔ Agregar función GetFileManager() en el Controlador C_FileManager.php @new @today @done (17-08-11 21:47)
+     ✔ Agregar función GetFileManager() en el modelo M_FileManager.php @new @today @done (17-08-11 21:48)
+     ✔ Agregar SP_GetFileManager en la base de datos @new @today @done (17-08-11 22:07)
+     ✔ Tiempo total del requerimiento CYL-1.3 @time @today @started(17-08-11 21:24) @done (17-08-11 22:07) @lasted(0:43)
+    CYL-1.4 Descargar archivos:
+      ✔ Agregar enrutamiento de GetFileManagerByFileID en routes @new @today @done (17-08-11 22:18)
+      ✔ Agregar función GetFileManagerByFileID() en H_FileManager.js para obtener archivo seleccionado @new @today @done (17-08-11 22:50)
+      ✔ Agregar función GetFileManagerByFileID() en el Controlador C_FileManager.php @new @today @done (17-08-11 22:50)
+      ✔ Agregar función GetFileManagerByFileID() en el modelo M_FileManager.php @new @today @done (17-08-11 22:50)
+      ✔ Obtener archivo del repositorio al seleccionar la opción Descargar en la fila de la tabla @new @today @done (17-08-11 23:07)
+      ✔ Tiempo total de cumpliemiento del requerimiento CYL-1.3 @time @today @started(17-08-11 22:12) @done (17-08-11 23:12) @lasted(1:00)
+    CYL-1.5 Eliminar archivos:
+      ✔ Agregar enrutamiento DeleteFileManagerByFileID en routes @new @today @done (17-08-12 10:38)
+      ✔ Agregar modal para la confirmación de eliminar archivo en la vista V_FileManager.php @new @today @done (17-08-12 10:46)
+      ✔ Agregar función ShowModalDeleteFile() en H_FileManager.js para mostrar modal @new @today @done (17-08-12 10:53)
+      ✔ Agregar función DeleteFileManagerByFileID() en H_FileManager.js para eliminar archivo seleccionado @new @today @done (17-08-12 10:57)
+      ✔ Agregar función DeleteFileManagerByFileID() en el Controlador C_FileManager.php @new @today @done (17-08-12 10:59)
+      ✔ Agregar función DeleteFileManagerByFileID() en el modelo M_FileManager.php @new @today @done (17-08-12 11:04)
+      ✔ Agregar SP_DeleteFileManagerByFileID en la base de datos @new @today @done (17-08-12 11:12)
+      ✔ Tiempo total de cumpliemiento del requerimiento CYL-1.3 @time @today @started(17-08-12 10:38) @done (17-08-12 11:15) @lasted(0:37)
+    CYL-1.6 Documentación:
+      ✔ Comentar código en Helper, Vista, Controlador, Modelo y SP @note @today @done (17-08-12 15:40)
+      ✔ Documentar archivos modificados de la aplicación web @note @today @done (17-08-12 15:40)
+      ✔ Documentar procedimientos almacenados de la base de datos @note @today @done (17-08-12 15:40)
+      ✔ Documentar métodos (función o procedimiento) @note @today @done (17-08-12 15:13)
+      ✔ tiempo @started(17-08-12 14:31) @done (17-08-12 15:40) @lasted(1:09)
+    CYL-1.7 Correcciones:
+      ✔ Corregir tabla de lista de archivos V_FileManager, convertir en DataTable js en el Helper H_FileManager @fix @today @started(17-08-12 08:10) @done (17-08-12 09:10) @lasted(1:00)
+      ✔ Mostrar mensaje de éxito en cada tìpo de función (agregar,descargar y eliminar) @fix @today @done (17-08-12 11:30)
+      ✔ Corregir en el controlador DeleteFileManagerByID para recuperar file_path @fix @today @done (17-08-12 12:45)
+      ✔ Eliminar archivo fisico al llamar método del controlador DeleteFileManagerByID @fix @today @done (17-08-12 12:45)
+      ✔ Agregar spin-loading a al inicializar el datatable @fix @today @done (17-08-12 13:50)
+      ✔ tiempo @started(17-08-12 11:22) @done (17-08-12 13:50) @lasted(2:28)
+      
+Verificado:
+
+Implementado:

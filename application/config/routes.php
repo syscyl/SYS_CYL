@@ -143,3 +143,4 @@ $route['FileManager']		=	'C_FileManager/V_FileManager';
 $route['SetFileManager']	=	'C_FileManager/SetFileManager';
 $route['GetFileManager']	=	'C_FileManager/GetFileManager';
 $route['GetFileManagerByFileID']	=	'C_FileManager/GetFileManagerByFileID';
+$route['DeleteFileManagerByFileID']	=	'C_FileManager/DeleteFileManagerByFileID';

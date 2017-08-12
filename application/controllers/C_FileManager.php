@@ -7,6 +7,7 @@ class C_FileManager extends CI_Controller {
         $this->load->model('M_FileManager');
     }
 /***************************************************************************************************************************************/
+    //Mostrar vista V_FileManager.
     public function V_FileManager()
     {
         $this->load->view('usuario/header-usuario.html');
@@ -15,16 +16,15 @@ class C_FileManager extends CI_Controller {
         $this->load->view('usuario/footer-usuario.html');
     }
 /***************************************************************************************************************************************/
+    //Insertar archivos en el directorio y base de datos.
     public function SetFileManager()
     {
         if(isset($_FILES['file-es']))
         {
             $images = $_FILES['file-es'];
 
-            // get file names
             $filenames = $images['name'];
 
-            // loop and process files
             for($i=0; $i < count($filenames); $i++)
             {
                 $ext = explode('.', basename($filenames[$i]));
@@ -40,12 +40,6 @@ class C_FileManager extends CI_Controller {
                     $paths[] = $file_path;
 
                     $this->M_FileManager->SetFileManager($file_type, $file_name, $file_caption, $file_path, $file_extension);
-                    // $success = array('file_type' => $file_type,
-                    //     'file_name' => $file_name,
-                    //     'file_caption' => $file_caption,
-                    //     'file_path' => $file_path,
-                    //     'file_extension' => $file_extension,
-                    // );
                 }
                 else
                 {
@@ -58,18 +52,39 @@ class C_FileManager extends CI_Controller {
         }
     }
 /***************************************************************************************************************************************/
+    //Obtener todos los archivos.
     public function GetFileManager()
     {
         $GetFileManager=$this->M_FileManager->GetFileManager();
         echo json_encode($GetFileManager);
     }
 /***************************************************************************************************************************************/
+    //Obtener un archivo por id.
     public function GetFileManagerByFileID()
     {
         $json = file_get_contents('php://input');
         $data = json_decode($json,TRUE);
-        $GetFileManagerByFileID=$this->M_FileManager->GetFileManagerByFileID($data['file_id']);
+        $GetFileManagerByFileID = $this->M_FileManager->GetFileManagerByFileID($data['file_id']);
         echo json_encode($GetFileManagerByFileID);
+    }
+/***************************************************************************************************************************************/
+    //Eliminar un archivo por la ruta en el directorio y por id en la base de datos.
+    public function DeleteFileManagerByFileID()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);        
+
+        $file = $this->M_FileManager->GetFileManagerByFileID($data['file_id']);
+        $file_path = $file->file_path;
+        $success = unlink($file_path);
+ 
+        if($success = true)
+        {
+            $this->M_FileManager->DeleteFileManagerByFileID($data['file_id']);                 
+        }
+        
+        $output = ['success' => $success];  
+        echo json_encode($output);
     }
 /***************************************************************************************************************************************/
 }

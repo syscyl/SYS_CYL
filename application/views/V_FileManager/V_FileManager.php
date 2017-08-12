@@ -2,26 +2,11 @@
     .table-fixed thead
     {   
       background-color: #139843;
-      /*width: 100%; */
       color:white;
     }
-
-    .table-fixed tbody
+    .dataTables_wrapper.no-footer .dataTables_scrollBody
     {
-      height: 230px;
-      overflow-y: auto;
-      /*width: 100%;*/
-    }
-
-    .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th
-    {
-      /*display: block;*/
-    }
-
-    .table-fixed tbody td, .table-fixed thead > tr> th
-    {
-      float: left;
-      border-bottom-width: 0;
+        border-bottom: 1px solid #eaeaea;
     }
 </style>
 <section id="main-content" class=" ">
@@ -47,21 +32,23 @@
                 </header>
                 <div class="content-body">    
                     <div class="row">
-                        <div class="col-md-6 col-sm-12 col-xs-6"> 
-                            <input id="file-es" name="file-es[]" type="file" multiple>                            
+                        <div class="col-md-6 col-sm-12 col-xs-12" style="padding-top: 5px;"> 
+
+                            <!-- BEGIN PLUGIN BOOSTRAP FILE INPUT-->
+                            <input id="file-es" name="file-es[]" type="file" multiple>
+                            <!-- BEGIN PLUGIN BOOSTRAP FILE INPUT-->
+
                         </div>
-                        <div class="col-md-6 col-sm-12 col-xs-6">
-                            <table id="table-filemanager" class="table table-fixed">
-                                <thead>
-                                    <tr>
-                                        <th class="col-xs-2">Nº</th>
-                                        <th class="col-xs-8">Archivo</th>
-                                        <th class="col-xs-2">Opción</th>
-                                    </tr>
-                                </thead>
-                                <tbody>                                                        
-                                </tbody>
-                            </table>
+                        <div class="col-md-6 col-sm-12 col-xs-12">                            
+                            <div class="div-table" hidden="">
+
+                                <!-- BEGIN DATATABLE-->
+                                <table id="table-filemanager" class="table table-fixed">
+                                </table>
+                                <!-- END DATATABLE-->
+
+                            </div>
+                            <div class="spin-loading" style="text-align: center;padding-top: 10%;"></div>
                         </div>
                     </div>               
                 </div>
@@ -69,3 +56,21 @@
         </div>
     </section>
 </section>
+
+<!-- BEGIN MODAL MESSAGE-->
+<div id="modal-delete-file" class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="width: 300px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Confirmación</h4>
+            </div>
+            <div class="modal-body" style="text-align:center;word-wrap: break-word;">¿Desea eliminar el archivo <b><span id="span-filecaption"></span></b>?</div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
+                <button type="button" id="btn-delete-file" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL MESSAGE-->

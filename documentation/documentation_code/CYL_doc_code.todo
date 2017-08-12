@@ -1,0 +1,30 @@
+Proyecto SYS_CYL:
+
+  Module FileManager:
+
+    Helper JS H_FileManager:    
+      **H_FileManager():**              Inicializar Helper js H_FileManager.
+      **SetFileManager():**             Insertar archivos usando el plugin "Boostrap File input".
+      **GetFileManager():**             Obtener todos los archivos y listar en una tabla usando el plugin "DataTable Jquery".
+      **GetFileManagerByFileID():**     Obtener un archivo por id y descargar archivo del directorio.
+      **ShowModalDeleteFile():**        Mostrar modal de confirmación para eliminar archivo.
+      **DeleteFileManagerByFileID():**  Eliminar un archivo.
+
+    Controller Class C_FileManager:
+      **V_FileManager():**              Mostrar vista V_FileManager.
+      **SetFileManager():**             Insertar archivos en el directorio y base de datos.
+      **GetFileManager():**             Obtener todos los archivos.
+      **GetFileManagerByFileID():**     Obtener un archivo por id.
+      **DeleteFileManagerByFileID():**  Eliminar un archivo por la ruta en el directorio y por id en la base de datos.
+
+    Model Class M_FileManager:
+      **SetFileManager():**             Insertar un archivo.
+      **GetFileManager():**             Obtener todos los archivos.
+      **GetFileManagerByFileID():**     Obtener un archivo por id.
+      **DeleteFileManagerByFileID():**  Eliminar un archivo por id.
+
+    MYSQL:
+      **Tabla "file":**                 Información de los achivos
+      **SP_SetFileManager:**            Insertar una fila en la tabla "file"
+      **SP_GetFileManager:**            Devolver una lista de archivos si "file_id" es 0,en caso contrario delvolver una fila por "file_id" de la tabla "file.
+      **SP_DeleteFileManagerByFileID:** Eliminar una fila por "file_id" de la tabla "file".
