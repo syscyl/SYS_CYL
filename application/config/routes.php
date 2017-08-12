@@ -139,4 +139,7 @@ $route['obtener_usuario'] 		= 'usuario_controller/obtener_usuario';
 $route['editar_usuario'] 		= 'usuario_controller/editar_usuario';
 /************************************************************************************************************************************************************************/
 //By xjeanxx 10/08/2017
-$route['FileManager']	=	'C_FileManager/V_FileManager';
+$route['FileManager']		=	'C_FileManager/V_FileManager';
+$route['SetFileManager']	=	'C_FileManager/SetFileManager';
+$route['GetFileManager']	=	'C_FileManager/GetFileManager';
+$route['GetFileManagerByFileID']	=	'C_FileManager/GetFileManagerByFileID';
