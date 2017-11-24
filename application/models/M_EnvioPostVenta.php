@@ -25,6 +25,19 @@ class M_EnvioPostVenta extends CI_Model {
         } 
     }
 /***************************************************************************************************************************************/
+    public function getEnvioPostVentaById($data)
+    {
+        $id_epostventa = $data['id_epostventa'];        
 
+        $query=$this->db->query("CALL SP_getEnvioPostVentaById($id_epostventa);");
+        if ($query->num_rows()>0)
+        {
+          return $query->result();
+        }
+        else
+        {
+          return false;
+        } 
+    }
 /***************************************************************************************************************************************/
 }

@@ -9,7 +9,7 @@ function H_EnvioPostVenta()
 { 
 
     $('#btn-recuperar-almacen2').on('click', getEnvioPostVenta);
-    $(document).on('click','.btn-ver-envio-postventa', showStatusEvio);
+    $(document).on('click','.btn-ver-envio-postventa', getEnvioPostVentaById);
 }
 /******************************************************************************************************************************************************************************/
 
@@ -52,7 +52,6 @@ function getEnvioPostVenta() {
                 resp[i].codigo_epostventa,
                 // resp[i].nombre_usuario,
                 '<button type="button"  data-id="'+resp[i].id_epostventa+'" class="btn btn-primary btn-ver-envio-postventa" rel="tooltip" data-animate="animated bounce" data-toggle="tooltip" data-original-title="Ver" data-placement="top"><i class="glyphicon glyphicon-eye-open"></i></button>'
-                +'<button type="button" data-id="'+resp[i].id_epostventa+'" class="btn btn-primary btn-editar-envio-postventa" rel="tooltip" data-animate="animated bounce" data-toggle="tooltip" data-original-title="Editar" data-placement="top"><i class="fa fa-edit"></i></button>'
                 +'<button type="button" data-id="'+resp[i].id_epostventa+'" class="btn btn-danger btn-eliminar-envio-postventa" rel="tooltip" data-animate="animated bounce" data-toggle="tooltip" data-original-title="Eliminar" data-placement="top">'
                 +'<i class="glyphicon glyphicon-remove"></i></button>'
                 ]).draw(false);
@@ -69,7 +68,7 @@ function getEnvioPostVenta() {
 }
 
 /******************************************************************************************************************************************************************************/
-function showStatusEvio() {
+function getEnvioPostVentaById() {
    var _div_button;
     var data={};
     data.id_epostventa  = parseInt($(this).attr('data-id'));
@@ -87,11 +86,11 @@ function showStatusEvio() {
             $('.div-btnagregar-ob').empty();
         },
         success: function (resp) 
-        {
+        { 
             var idestado=parseInt(resp[0].id_estado);
             var nombre_estado;
 
-            $('.li-op').children('a').attr('data-idlote',resp[0].id_lote);                 
+            $('.li-op').children('a').attr('data-id',resp[0].id_epostventa);                 
 
             $div_opcion_envio.html(
             '<button type="button" class="btn  btn-tr btn-cambiar-estado-epostventa" data-id="'+resp[0].id_epostventa+'" data-idestado="5" data-toggle="tooltip" data-animate=" animated bounce" title="Servicio Técnico"><i class="fa fa-truck"></i></button>'
@@ -128,12 +127,12 @@ function showStatusEvio() {
                     $('.btn-cambiar-estado').addClass('btn-secondary').removeClass('btn-primary').attr('disabled',true);
                 break;
             }
-            _div_button.children('.div-btnagregar-ob').html('<button class="btn btn-primary btn-corner btn-agregar-ob" data-agregar="true" data-idestado="'+idestado+'"  data-idlote="'+resp[0].id_lote+'"  data-idenvio="'+resp[0].id_envio+'"type="button" id="">'
+            _div_button.children('.div-btnagregar-ob').html('<button class="btn btn-primary btn-corner btn-agregar-ob" data-agregar="true" data-idestado="'+idestado+'"  data-id="'+resp[0].id_epostventa+'" type="button">'
             +'<i class="box_setting fa fa-plus"></i>&nbsp;&nbsp;Agregar'
             +'</button>');   
             
             $table_envio_estado.children('tbody').append(
-            '<tr><td>'+resp[0].id_epostventa+'</td>'
+            '<tr><td>'+resp[0].codigo_epostventa+'</td>'
             // +'<td>'+resp[0].numguiac_lote+'</td>'
             +'<td>'+nombre_estado+'</td></tr>'
             );  
