@@ -5,6 +5,7 @@ class Almacen_controller extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('almacen_model');
+        $this->load->model('M_EnvioPostVenta');
     }
 /************************************************************************************************************************************************************************/
     public function almacen() 
@@ -165,13 +166,21 @@ class Almacen_controller extends CI_Controller {
 /************************************************************************************************************************************************************************/
     public function registrar_guia_SE2()
     {
-        $json = file_get_contents('php://input');
-        $data = json_decode($json,TRUE);
-         $count=count($data['n_entregas']);    
+        $json         = file_get_contents('php://input');
+        $data         = json_decode($json,TRUE);        
+        $tipo_entrega = $data['tipo_entrega'];
+        $count        = count($data['n_entregas']);
+
         for ($i = 0; $i < $count; $i++)
         {
-            $registro=$this->almacen_model->registro_guia_SE($data['n_entregas'][$i]);
-        }        
+            if($tipo_entrega == 0) {
+                $registro = $this->almacen_model->registro_guia_SE($data['n_entregas'][$i]);
+            }
+            else if($tipo_entrega == 1) {
+                $registro = $this->M_EnvioPostVenta->insert_EnvioPostVenta($data['n_entregas'][$i]);
+            }
+        }
+       
         echo json_encode($registro);
     }
 /************************************************************************************************************************************************************************/

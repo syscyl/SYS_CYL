@@ -95,6 +95,7 @@ function closeModal(){
             $modal_foto_control.modal('show');
              alert("b")
            });
+
 /******************************************************************************************************************************************************************************/
 function fnc_registrar_n_entregas() 
 {
@@ -110,7 +111,8 @@ function fnc_registrar_n_entregas()
     }
 
     var data={};
-    data.n_entregas=array;
+    data.n_entregas   = array;
+    data.tipo_entrega = $('#tipo_entrega').val();
 
     $.ajax({
         type: "POST",
@@ -125,10 +127,10 @@ function fnc_registrar_n_entregas()
         success: function (resp) 
         {
             $("#txt-entregas").val('');
+            showSuccess("Nro de entregas registradas.")
         },
         complete: function () 
-        {   
-	     showSuccess("Nro de entregas registradas.")          
+        {        
         },
         error: function(resp)
         {
@@ -176,46 +178,6 @@ function fnc_recuperar_entregas()
         complete: function () 
         {    
         
-        },
-        error: function(resp)
-        {
-        }
-    });
-}
-
-function fnc_registrar_n_entregas() 
-{
-    var array=[];
-    var entrega = $("#txt-entregas").val().split('\n');
-
-    for (var i = 0;i<entrega.length;i++)
-    {
-        if(entrega[i]!="")
-        {
-            array.push(entrega[i]);
-        }
-    }
-
-    var data={};
-    data.n_entregas=array;
-
-    $.ajax({
-        type: "POST",
-        url: "registrar_guia_SE2",
-        data: JSON.stringify(data),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        async: false,
-        beforeSend: function () 
-        { 
-        },
-        success: function (resp) 
-        {
-            $("#txt-entregas").val('');
-        },
-        complete: function () 
-        {   
-         showSuccess("Nro de entregas registradas.")          
         },
         error: function(resp)
         {
