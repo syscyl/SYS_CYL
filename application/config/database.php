@@ -86,14 +86,14 @@ $db['default'] = array(
 	// 'hostname' => '192.168.1.10',
 	// 'username' => 'cyl',
 	// 'password' => '123',
-	'database' => 'db_cyl',
+	// 'database' => 'db_cyl',
 	// 'dbdriver' => 'mysqli',
 	//------------------------------------
 	/**** `root`@`localhost` ****/
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '',
-	// 'database' => 'cyltrans_db',
+	'password' => '1234',
+	'database' => 'cyltrans_db',
 	'dbdriver' => 'mysqli',
 	
 	'dbprefix' => '',

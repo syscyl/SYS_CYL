@@ -40,4 +40,9 @@ class M_EnvioPostVenta extends CI_Model {
         } 
     }
 /***************************************************************************************************************************************/
+    public function insertEnvioPostVentaDetalle($id_epostventa, $id_estado, $descripccion_epdetalle)
+    {
+        $this->db->query("CALL SP_Insert_EnvioPostVentaDetalle($id_epostventa, $id_estado, '$descripccion_epdetalle')");
+    }
+/***************************************************************************************************************************************/
 }

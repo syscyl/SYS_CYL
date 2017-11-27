@@ -10,6 +10,53 @@ function H_EnvioPostVenta()
 
     $('#btn-recuperar-almacen2').on('click', getEnvioPostVenta);
     $(document).on('click','.btn-ver-envio-postventa', getEnvioPostVentaById);
+
+    // Select all checkbox of table epostventa
+    $('#checkbox-all-epostventa').on('click', function(){     
+        var rows = $datatable_almacen2.rows({ 'search': 'applied' }).nodes();    
+        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+    });
+
+    $('#btn-insert-servtecnico-epostventad').on('click', function () {
+        //TODO: Mostrar modal de confirmación
+        var array=[];
+        var data={};
+        $datatable_almacen2.$('input[type="checkbox"]').each(function(){
+            if(this.checked){
+                array.push($(this).val());      
+            }
+        });
+        if(array.length){
+           data.all_id_epostventa = array;
+
+           $.ajax({
+            type: "POST",
+            url: "insertSTEnvioPostVentaDetalle",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            beforeSend: function () 
+            {
+            },
+            success: function (resp) 
+            {
+                showSuccess('Se cambió al estado "Servicio Técnico"');
+                getEnvioPostVenta();
+                $('#checkbox-all-epostventa').prop('checked',false);
+                //fnc_recuperar_lote();
+            },
+            complete: function () 
+            {    
+            },
+         error: function(resp)
+         {
+         }
+     }); 
+       }
+       else{alert('Selecciona ...');} 
+   });
+
 }
 /******************************************************************************************************************************************************************************/
 
@@ -35,22 +82,23 @@ function getEnvioPostVenta() {
         },
         success: function (resp) 
         {
-            // var checkbox="";
+            var checkbox="";
             for (var i = 0; i<resp.length;i++) 
             {
-                // if(resp[i].estado_envio==1)
-                // {
-                //     checkbox='<input type="checkbox" name="id[]" value="'+resp[i].id_envio+'"/>'
-                // }
-                // else
-                // {
-                //     checkbox="";
-                // }
+                if(resp[i].id_estado == 4)
+                {
+                    checkbox='<input type="checkbox" name="id[]" value="'+resp[i].id_epostventa+'"/>'
+                }
+                else
+                {
+                    checkbox="";
+                }
                 $datatable_almacen2.row.add([
+                checkbox,
                 i+1,
                 resp[i].fechac_epostventa,
                 resp[i].codigo_epostventa,
-                // resp[i].nombre_usuario,
+                resp[i].nombre_estado,
                 '<button type="button"  data-id="'+resp[i].id_epostventa+'" class="btn btn-primary btn-ver-envio-postventa" rel="tooltip" data-animate="animated bounce" data-toggle="tooltip" data-original-title="Ver" data-placement="top"><i class="glyphicon glyphicon-eye-open"></i></button>'
                 +'<button type="button" data-id="'+resp[i].id_epostventa+'" class="btn btn-danger btn-eliminar-envio-postventa" rel="tooltip" data-animate="animated bounce" data-toggle="tooltip" data-original-title="Eliminar" data-placement="top">'
                 +'<i class="glyphicon glyphicon-remove"></i></button>'

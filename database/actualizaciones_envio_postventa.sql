@@ -32,8 +32,20 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_getEnvioPostVenta`(IN `v_fechai` DATE,IN `v_fechaf` DATE)
 BEGIN
 	SELECT 
-		*
-	FROM envio_postventa ep
+		ep.codigo_epostventa,
+		ep.fechac_epostventa,
+		ep.id_epostventa,
+		u.id_usuario,
+		(SELECT e.id_estado FROM envio_postventa_detalle epd 
+		INNER JOIN estado_envio e ON e.id_estado = epd.id_estado 
+		WHERE id_epdetalle = (SELECT MAX(id_epdetalle) FROM envio_postventa_detalle
+		WHERE id_epostventa = ep.id_epostventa)) AS id_estado,
+
+		(SELECT e.nombre_estado FROM envio_postventa_detalle epd 
+		INNER JOIN estado_envio e ON e.id_estado = epd.id_estado 
+		WHERE id_epdetalle = (SELECT MAX(id_epdetalle) FROM envio_postventa_detalle
+		WHERE id_epostventa = ep.id_epostventa)) AS nombre_estado
+	FROM envio_postventa ep    
 	INNER JOIN usuario u ON u.id_usuario = ep.id_usuario
 	WHERE DATE(ep.fechac_epostventa) BETWEEN v_fechai AND v_fechaf
 	ORDER BY ep.fechac_epostventa desc;
@@ -98,6 +110,32 @@ BEGIN
 	INNER JOIN estado_envio e ON e.id_estado = epd.id_estado
 	WHERE 
 		ep.id_epostventa = vid_epostventa;
+END
+;;
+DELIMITER ;
+
+-- 26/11/2017
+-- ----------------------------
+-- Procedure structure for SP_Insert_EnvioPostVentaDetalle
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `SP_Insert_EnvioPostVentaDetalle`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_Insert_EnvioPostVentaDetalle`(
+	IN `vid_epostventa` INT,
+	IN `vid_estado` INT,
+	IN `vdescripccion_epdetalle` TEXT)
+BEGIN
+
+	INSERT INTO envio_postventa_detalle (
+		id_epostventa,
+		id_estado,
+		descripccion_epdetalle,
+		fecha_epdetalle) 
+	VALUES(
+		vid_epostventa,
+		vid_estado,
+		vdescripccion_epdetalle,
+		CURRENT_TIMESTAMP);
 END
 ;;
 DELIMITER ;

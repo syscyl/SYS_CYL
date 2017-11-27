@@ -26,13 +26,13 @@
                                 </button>
                             </div>                            
                         </div>
-                       <!--  <div class="pull-right margin-button">
+                        <div class="pull-right margin-button">
                             <div class="col-xs-3">
-                                 <button style="margin-left: -30px;" class="btn btn-primary margin-top-button" type="button" id="btn-enviar-almacen">
-                                    <i class="box_setting fa fa-truck"></i>&nbsp;&nbsp;En Trayecto
+                                 <button style="margin-left: -30px;" class="btn btn-primary margin-top-button" type="button" id="btn-insert-servtecnico-epostventad">
+                                    <i class="box_setting fa fa-cogs"></i>&nbsp;&nbsp;Servicio Técnico
                                 </button>
                             </div>                        
-                        </div> -->
+                        </div>
                     </header>
                     <div class="content-body">    
                         <div class="row">
@@ -40,12 +40,12 @@
                                <table id="datatable-almacen2" class="table table-striped dt-responsive display" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-<!--                                             <th><input type="checkbox" name="select_all" value="1" id="example-select-all"></th> -->
+                                            <th width="10px"><input type="checkbox" name="select_all" value="1" id="checkbox-all-epostventa"></th>
                                             <th style="text-align: center" width="50px">Nº</th>
                                             <th style="text-align: center" width="200px">FECHA</th>    
-                                            <th style="text-align: center"width="200px">CÓDIGO POST-VENTA</th>  <!--   
-                                            <th>CLIENTE</th> -->
-                                            <th style="text-align: center" width="200px">OPCIÓN</th> 
+                                            <th style="text-align: center"width="200px">CÓDIGO POST-VENTA</th>
+                                            <th style="text-align: center"width="100px">ESTADO</th>
+                                            <th style="text-align: center" width="100px">OPCIÓN</th> 
                                         </tr>
                                     </thead>                                          
                                     <tbody align="center" id="tbody-almacen">
