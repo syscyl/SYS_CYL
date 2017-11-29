@@ -121,7 +121,7 @@
                                     </a>
                                 </li>
                                 <li class="li-op op-entregado">
-                                    <a id="click-entregado" data-idestado="3" href="#op-entregado" data-toggle="tab">
+                                    <a id="click-entregado2" data-idestado="3" href="#op-entregado" data-toggle="tab">
                                         <i class="fa fa-archive"></i> ENTREGADO
                                     </a>
                                 </li>

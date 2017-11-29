@@ -18,9 +18,14 @@ function H_EnvioPostVenta()
     });
 
     // insert detalle (servicio técnico)
-    $('#btn-insert-servtecnico-epostventad').on('click', function () {
-        //TODO: Mostrar modal de confirmación       
-        
+    $('#btn-insert-servtecnico-epostventad').on('click', function (e) {
+        //TODO: Mostrar modal de confirmación    
+         $('#modal-confirmacion').modal({
+                backdrop: 'static',
+                keyboard: false
+            })
+            .one('click', '#modal-btn-aceptar2', function(e) {   
+        e.preventDefault();
         var array=[];
         var data={};
         $datatable_almacen2.$('input[type="checkbox"]').each(function(){
@@ -29,11 +34,7 @@ function H_EnvioPostVenta()
             }
         });
         if(array.length){
-            $('#modal-confirmacion').modal({
-                backdrop: 'static',
-                keyboard: false
-            })
-            .one('click', '#modal-btn-aceptar2', function(e) {
+           
                 data.all_id_epostventa = array;
                 $.ajax({
                     type: "POST",
@@ -53,16 +54,18 @@ function H_EnvioPostVenta()
                     complete: function () {},
                     error: function(resp) {}
                 });
-            });
         }
-        else{alert('Selecciona ...');} 
+        else{ $('#modal-confirmacion').modal('hide');} 
+            });
     });
 
     $('#click-cliente').on('click',getStatusByIdePostVenta);
     $('#click-servtecnico').on('click',getStatusByIdePostVenta);
-    $('#click-entregado').on('click',getStatusByIdePostVenta);
-    // $(document).on('click','.btn-agregar-ob2',fnc_cambiar_estado2);
-    // $('#btn-aceptar2').on('click', fnc_aceptar_estado2);
+    $('#click-entregado2').on('click',getStatusByIdePostVenta);
+    $(document).on('click','.btn-agregar-ob2',fnc_cambiar_estado2);
+    $(document).on('click','.btn-cambiar-estado-epostventa',fnc_cambiar_estado2);
+    $('#btn-aceptar2').on('click', fnc_aceptar_estado2);
+
 }
 /******************************************************************************************************************************************************************************/
 
@@ -161,24 +164,106 @@ function getEnvioPostVentaById() {
 
                 case 4: 
                     nombre_estado="Cliente"; 
-                      $('#click-cliente').trigger('click');
+                    $('#click-cliente').trigger('click');
                     _div_button=$op_almacen;
-                    //$('.btn-al').addClass('btn-secondary').removeClass('btn-primary').attr('disabled',true);
+                    $('.btn-al').addClass('btn-secondary').removeClass('btn-primary').attr('disabled',true);
                 break;
 
                 case 5:
                     nombre_estado="Servicio Técnico";
-                     $('#click-servtecnico').trigger('click');
+                    $('#click-servtecnico').trigger('click');
                     _div_button=$op_trayecto;
-                    //$('.btn-al').addClass('btn-secondary').removeClass('btn-primary').attr('disabled',true);
-                    $('.btn-tr').addClass('btn-secondary').removeClass('btn-primary').attr('disabled',true);
+                    $('.btn-al').addClass('btn-secondary').removeClass('btn-primary').attr('disabled', true);
+                    $('.btn-tr').addClass('btn-secondary').removeClass('btn-primary').attr('disabled', true);
                 break;
 
                 case 3:
                     nombre_estado="Entregado";
-                      $('#click-entregado').trigger('click');
+                    $('#click-entregado').trigger('click');
                     _div_button=$op_entregado;
                     $('.btn-cambiar-estado').addClass('btn-secondary').removeClass('btn-primary').attr('disabled',true);
+                break;
+            }
+            _div_button.children('.div-btnagregar-ob').html('<button class="btn btn-primary btn-corner btn-agregar-ob2" data-agregar="true" data-idestado="'+idestado+'"  data-id="'+resp[0].id_epostventa+'" type="button">'
+            +'<i class="box_setting fa fa-plus"></i>&nbsp;&nbsp;Agregar'
+            +'</button>');   
+            
+            $table_envio_estado.children('tbody').append(
+            '<tr><td>'+resp[0].codigo_epostventa+'</td>'
+            +'<td>'+nombre_estado+'</td></tr>'
+            // +'<td>'+resp[0].numguiac_lote+'</td>'
+            );  
+            //$img_foto_guia .html('<img class="img-rounded img-responsive img-size" src="'+resp[0].fotoguiac_lote+'">');                
+        },
+        complete: function () 
+        { 
+            $sct_ver_envio.show();
+            $sct_tabla_almacen.hide();
+            fnc_tooltip ();
+        },
+        error: function(resp)
+        {
+        }
+    });
+}
+/******************************************************************************************************************************************************************************/
+function getEnvioPostVentaById2(id_epostventa) {
+   var _div_button;
+    var data={};
+    data.id_epostventa  = id_epostventa;
+
+    $.ajax({
+        type: "POST",
+        url: "getEnvioPostVentaById",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {           
+           $table_envio_estado.children('tbody').empty();       
+           $('.div-btnagregar-ob').empty();
+        },
+        success: function (resp) 
+        { 
+            var idestado=parseInt(resp[0].id_estado);
+            var nombre_estado;
+
+            $('.li-op').children('a').attr('data-idepostventa',resp[0].id_epostventa);                 
+
+            $div_opcion_envio.html(
+            '<button type="button" class="btn  btn-tr btn-cambiar-estado-epostventa" data-id="'+resp[0].id_epostventa+'" data-idestado="5" data-toggle="tooltip" data-animate=" animated bounce" title="Servicio Técnico"><i class="fa fa-cogs"></i></button>'
+            +'<button type="button" class="btn  btn-en btn-cambiar-estado-epostventa" data-id="'+resp[0].id_epostventa+'" data-idestado="3" data-toggle="tooltip" data-animate=" animated bounce" title="Entregado"><i class="fa fa-archive"></i></button>');
+              
+            $('.btn-cambiar-estado-epostventa').addClass('btn-primary');
+            switch(idestado)
+            {
+                // case 1:                                        
+                //     nombre_estado="Por recoger";
+                //     $click_recoger.trigger('click');
+                //     _div_button=$op_recoger;                   
+                // break;
+
+                case 4: 
+                    nombre_estado="Cliente"; 
+                    $('#click-cliente').trigger('click');
+                    _div_button=$op_almacen;
+                    $('.btn-al').addClass('btn-secondary').removeClass('btn-primary').attr('disabled',true);
+                break;
+
+                case 5:
+                    nombre_estado="Servicio Técnico";
+                    $('#click-servtecnico').trigger('click');
+                    _div_button=$op_trayecto;
+                    $('.btn-al').addClass('btn-secondary').removeClass('btn-primary').attr('disabled', true);
+                    $('.btn-tr').addClass('btn-secondary').removeClass('btn-primary').attr('disabled', true);
+                break;
+
+                case 3:
+                    nombre_estado="Entregado";
+                    $('#click-entregado').trigger('click');
+                    _div_button=$op_entregado;
+                     $('.btn-cambiar-estado-epostventa').addClass('btn-secondary').removeClass('btn-primary').attr('disabled',true);
                 break;
             }
             _div_button.children('.div-btnagregar-ob').html('<button class="btn btn-primary btn-corner btn-agregar-ob2" data-agregar="true" data-idestado="'+idestado+'"  data-id="'+resp[0].id_epostventa+'" type="button">'
@@ -238,7 +323,7 @@ function getStatusByIdePostVenta()
                 break;
 
                 case 3:
-                  _table    =   $('#table-op-entregado');
+                  _table    =   $('#table-op-entregado2');
                 break;
             }
             var color_tr="";
@@ -275,6 +360,8 @@ function fnc_cambiar_estado2 ()
 {
               
   $('#modal-aceptar').modal('show');
+ 
+  $('#chck-estado-detalle').bootstrapSwitch('state', true);
   $visible.hide();
   $visible_in.hide();
   $visible_in2.hide();
@@ -346,7 +433,20 @@ function fnc_aceptar_estado2()
         {
              showSuccess('Se cambió al estado "'+$divestado.text()+'"');
              $('#modal-aceptar').modal('hide');
-             $('#click-servtecnico').trigger('click');
+            switch(data.id_estado)
+            {
+                // case 1:
+                //     _table=$table_op_recoger;                    
+                // break;
+                case 5:
+                    $('#click-servtecnico').trigger('click');
+                break;
+
+                case 3:
+                  $('#click-entregado2').trigger('click');
+                break;
+            }             
+            getEnvioPostVentaById2(data.id_epostventa);
         }
     });
     
