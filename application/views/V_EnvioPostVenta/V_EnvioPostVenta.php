@@ -1,3 +1,14 @@
+<style>
+.btn-cambiar-estado-epostventa {
+    margin-top: 30px !important;
+    margin: 5px;
+    margin-top: 5px;
+    width: 80px;
+    height: 60px;
+    border-radius: 10px;
+}
+.btn-cambiar-estado-epostventa  i {font-size: 30px;}
+</style>
 <section id="main-content" class="">
     <section class="wrapper" id="sct-tabla-almacen" style='margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
         <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
@@ -59,130 +70,6 @@
             </div>
     </section>
 
-    <section class="wrapper" id="sct-almacen" style='margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
-        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-            <div class="page-title">
-                <div class="pull-left">
-                    <h1 class="title title-almacen">REGISTRO DE LOTE</h1>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="col-lg-12">
-            <section class="box">
-                <form id="form-lote" onsubmit="return false">
-                    <header class="panel_header">
-                        <div class="title pull-left">
-                            <button class="btn btn-primary btn-corner" id="btn-registrar-lote" type="submit">
-                                <i class="box_setting fa fa-save"></i>&nbsp;&nbsp;
-                                Guardar
-                            </button>
-
-                            <button class="btn btn-primary btn-corner" id="btn-editar-lote" type="button">
-                                <i class="box_setting fa fa-save"></i>&nbsp;&nbsp;
-                                Guardar
-                            </button>
-
-                           <button class="btn btn-default btn-corner btn-sct-volver" type="button" >
-                                <i class="box_setting fa fa-undo"></i>&nbsp;&nbsp;
-                                Volver
-                            </button>  
-                        </div>
-                        <div class="actions panel_actions pull-right">
-                            <i class="box_toggle fa fa-chevron-down"></i>                           
-                        </div>
-                    </header>
-                    <div class="content-body">    
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label class="form-label" >Fecha</label>
-                                            <div class="controls">
-                                                <input type="text" class="today datepicker form-control" id="txt-fecha-lote">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label class="form-label">Hora</label>
-                                            <div class="controls">
-                                                <input type="text"  data-minute-step="1" id="txt-hora-lote" data-show-meridian="true"  data-template="dropdown" class="form-control timepicker hour-today form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label class="form-label">Remitente</label>
-                                            <div class="controls">
-                                                <input type="text" class="list list-clientes form-control" placeholder="" >
-                                                <input type="hidden" id="txt-id-remitente" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label class="form-label">Destinatario</label>&nbsp;&nbsp;
-                                            <a href="javascript:void(0);">
-                                                <button type="button" id="btn-modal-destinatario" class="btn btn-primary btn-round" style="margin-top:-11px;width:30px;" rel="tooltip" data-animate=" animated bounce" data-toggle="tooltip" data-original-title="Agregar destinatario" data-placement="top">
-                                                    <i class="fa fa-plus" style="margin-left:-5px;"></i>
-                                                </button>
-                                            </a>
-                                            <div class="controls">
-                                                <input type="text" class="list list-destinatarios form-control" placeholder="" >
-                                                <input type="hidden" id="txt-id-destinatario" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label class="form-label" >Nº Guia Cliente</label>
-                                            <div class="controls">                                    
-                                                <input type="text" class="form-control" id="txt-guiac-lote">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label class="form-label">Dirección Destino</label>
-                                            <div class="controls">                                    
-                                                <input type="text" class="form-control" id="txt-direcciond-destinatario">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label class="form-label">Cantidad</label>
-                                            <div class="controls">                                    
-                                                <input type="text" class="form-control" id="txt-cantidad-lote">
-                                            </div>
-                                        </div>
-                                    </div>                                                  
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="form-group">
-                                            <label class="form-label">Observación</label>
-                                            <div class="controls">                                    
-                                                <textarea class="form-control" id="txt-observacion-lote"></textarea>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>                           
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </section>
-        </div>
-    </section>
     
     <section class="wrapper" id="sct-ver-envio" style='margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
         <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
@@ -224,12 +111,12 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 margin-top-button">
                             <ul class="nav nav-tabs nav-justified primary">
                                 <li class="li-op op-almacen">
-                                    <a id="click-almacen" data-idestado="1" href="#op-almacen" data-toggle="tab">
+                                    <a id="click-cliente" data-idestado="4" href="#op-almacen" data-toggle="tab">
                                         <i class="fa fa-user"></i> CLIENTE
                                     </a>
                                 </li>
                                 <li class="li-op op-trayecto">
-                                    <a id="click-trayecto" data-idestado="2" href="#op-trayecto" data-toggle="tab">
+                                    <a id="click-servtecnico" data-idestado="5" href="#op-trayecto" data-toggle="tab">
                                         <i class="fa fa-cogs"></i> SERVICIO TÉCNICO
                                     </a>
                                 </li>
@@ -241,12 +128,8 @@
                             </ul>
 
                             <div class="tab-content primary">
-                                <div class="tab-pane fade li-op" id="op-almacen">
-
-                                    <div class="div-btnagregar-ob">
-                                    </div>
-
-                                    <table id="table-op-almacen" class="table table-bordered table-info">
+                                <div class="tab-pane fade li-op" id="op-almacen">  
+                                    <table id="table-op-cliente" class="table table-bordered table-info">
                                         <thead>
                                             <tr>
                                                 <th>N°</th>
@@ -259,10 +142,11 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                
                                 <div class="tab-pane fade li-op" id="op-trayecto">
-                                     <div class="div-btnagregar-ob">
+                                    <div class="div-btnagregar-ob">
                                     </div>
-                                    <table id="table-op-trayecto" class="table table-bordered table-info">
+                                    <table id="table-op-servtecnico" class="table table-bordered table-info">
                                         <thead>
                                             <tr>
                                                 <th>N°</th>
@@ -277,9 +161,9 @@
                                 </div>
 
                                 <div class="tab-pane fade li-op" id="op-entregado">
-                                     <div class="div-btnagregar-ob">
-                                    </div>
-                                    <table id="table-op-entregado" class="table table-bordered table-info">
+                                    <!-- <div class="div-btnagregar-ob">
+                                    </div> -->
+                                    <table id="table-op-entregado2" class="table table-bordered table-info">
                                         <thead>
                                             <tr>
                                                 <th>N°</th>
@@ -341,7 +225,7 @@
                         </div>
                     </div> 
                     <div class="modal-footer" >
-                        <button type="button" id="btn-aceptar" class="btn btn-success">Aceptar</button>
+                        <button type="button" id="btn-aceptar2" class="btn btn-success">Aceptar</button>
                         <button type="button" style="margin-right: 250px" data-dismiss="modal" class="btn btn-default">Cancelar</button>
                     </div>
                 </form>
@@ -436,4 +320,20 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal confirmacion -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="modal-confirmacion">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="width: 400px">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="modal-btn-cancelar" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="modal-btn-aceptar2">Aceptar</button>
+      </div>
+    </div>
+  </div>
 </div>

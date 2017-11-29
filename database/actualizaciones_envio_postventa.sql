@@ -14,11 +14,13 @@ BEGIN
 		id_epostventa,
 		id_estado,
 		descripccion_epdetalle,
+		estadodesc_epdetalle,
 		fecha_epdetalle) 
 	VALUES(
 		vid_epostventa,
 		4,
 		'',
+		1,
 		CURRENT_TIMESTAMP);
 END
 ;;
@@ -32,8 +34,8 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_getEnvioPostVenta`(IN `v_fechai` DATE,IN `v_fechaf` DATE)
 BEGIN
 	SELECT 
-		ep.codigo_epostventa,
-		ep.fechac_epostventa,
+		ep.codigo_epostventa,		
+		DATE_FORMAT(ep.fechac_epostventa,'%d/%m/%Y  %h:%i %p') as fechac_epostventa,
 		ep.id_epostventa,
 		u.id_usuario,
 		(SELECT e.id_estado FROM envio_postventa_detalle epd 
@@ -97,17 +99,22 @@ DROP PROCEDURE IF EXISTS `SP_getEnvioPostVentaById`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_getEnvioPostVentaById`(IN `vid_epostventa` INT)
 BEGIN
-	SELECT
-		ep.id_epostventa,
+	SELECT 
 		ep.codigo_epostventa,
 		ep.fechac_epostventa,
-		epd.descripccion_epdetalle,
-		epd.fecha_epdetalle,
-		e.id_estado,
-		e.nombre_estado
-	FROM envio_postventa ep
-	INNER JOIN envio_postventa_detalle epd ON epd.id_epostventa = ep.id_epostventa
-	INNER JOIN estado_envio e ON e.id_estado = epd.id_estado
+		ep.id_epostventa,
+		u.id_usuario,
+		(SELECT e.id_estado FROM envio_postventa_detalle epd 
+		INNER JOIN estado_envio e ON e.id_estado = epd.id_estado 
+		WHERE id_epdetalle = (SELECT MAX(id_epdetalle) FROM envio_postventa_detalle
+		WHERE id_epostventa = ep.id_epostventa)) AS id_estado,
+
+		(SELECT e.nombre_estado FROM envio_postventa_detalle epd 
+		INNER JOIN estado_envio e ON e.id_estado = epd.id_estado 
+		WHERE id_epdetalle = (SELECT MAX(id_epdetalle) FROM envio_postventa_detalle
+		WHERE id_epostventa = ep.id_epostventa)) AS nombre_estado
+	FROM envio_postventa ep    
+	INNER JOIN usuario u ON u.id_usuario = ep.id_usuario
 	WHERE 
 		ep.id_epostventa = vid_epostventa;
 END
@@ -123,19 +130,49 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_Insert_EnvioPostVentaDetalle`(
 	IN `vid_epostventa` INT,
 	IN `vid_estado` INT,
-	IN `vdescripccion_epdetalle` TEXT)
+	IN `vdescripccion_epdetalle` TEXT,
+	IN `vestadodesc_epdetalle` BIT)
 BEGIN
 
 	INSERT INTO envio_postventa_detalle (
 		id_epostventa,
 		id_estado,
 		descripccion_epdetalle,
+		estadodesc_epdetalle,
 		fecha_epdetalle) 
 	VALUES(
 		vid_epostventa,
 		vid_estado,
 		vdescripccion_epdetalle,
+		vestadodesc_epdetalle,
 		CURRENT_TIMESTAMP);
 END
 ;;
 DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for SP_getStatusByIdePostVenta
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `SP_getStatusByIdePostVenta`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_getStatusByIdePostVenta`(
+	IN `vid_epostventa` INT,
+	IN `vid_estado` INT)
+BEGIN
+
+	SELECT 
+	DATE_FORMAT(epd.fecha_epdetalle,'%d/%m/%Y') as fecha,
+	DATE_FORMAT(epd.fecha_epdetalle,'%h:%i %p') as hora,
+	epd.descripccion_epdetalle,
+	epd.estadodesc_epdetalle
+	FROM estado_envio e
+	INNER JOIN envio_postventa_detalle epd ON epd.id_estado = e.id_estado
+	INNER JOIN envio_postventa ep ON ep.id_epostventa = epd.id_epostventa
+	WHERE
+	ep.id_epostventa = vid_epostventa AND
+	e.id_estado = vid_estado;
+END
+;;
+DELIMITER ;
+
+-- AGREGAR NUEVO CAMPO "estadodesc_epdetalle" EN LA TABLA "envio_postventa_detalle"

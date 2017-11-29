@@ -154,3 +154,5 @@ $route['envio_postventa']               =	'C_EnvioPostVenta/V_EnvioPostVenta';
 $route['getEnvioPostVenta']             =	'C_EnvioPostVenta/getEnvioPostVenta';
 $route['getEnvioPostVentaById']         =	'C_EnvioPostVenta/getEnvioPostVentaById';
 $route['insertSTEnvioPostVentaDetalle'] =	'C_EnvioPostVenta/insertSTEnvioPostVentaDetalle';
+$route['getStatusByIdePostVenta']       =	'C_EnvioPostVenta/getStatusByIdePostVenta';
+$route['insertEnvioPostVentaDetalle']   =	'C_EnvioPostVenta/insertEnvioPostVentaDetalle';

@@ -92,7 +92,7 @@ $db['default'] = array(
 	/**** `root`@`localhost` ****/
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '1234',
+	'password' => '',
 	'database' => 'cyltrans_db',
 	'dbdriver' => 'mysqli',
 	

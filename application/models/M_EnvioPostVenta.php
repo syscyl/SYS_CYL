@@ -40,9 +40,25 @@ class M_EnvioPostVenta extends CI_Model {
         } 
     }
 /***************************************************************************************************************************************/
-    public function insertEnvioPostVentaDetalle($id_epostventa, $id_estado, $descripccion_epdetalle)
+    public function insertEnvioPostVentaDetalle($id_epostventa, $id_estado, $descripccion_epdetalle, $estadodesc_epdetalle)
     {
-        $this->db->query("CALL SP_Insert_EnvioPostVentaDetalle($id_epostventa, $id_estado, '$descripccion_epdetalle')");
+        $this->db->query("CALL SP_Insert_EnvioPostVentaDetalle($id_epostventa, $id_estado, '$descripccion_epdetalle', $estadodesc_epdetalle)");
+    }
+/***************************************************************************************************************************************/
+    public function getStatusByIdePostVenta($data)
+    {
+        $id_epostventa = $data['id_epostventa'];
+        $id_estado     = $data['id_estado'];
+
+        $query=$this->db->query("CALL SP_getStatusByIdePostVenta($id_epostventa, $id_estado);");
+        if ($query->num_rows()>0)
+        {
+          return $query->result();
+        }
+        else
+        {
+          return false;
+        } 
     }
 /***************************************************************************************************************************************/
 }

@@ -35,14 +35,37 @@ class C_EnvioPostVenta extends CI_Controller {
 /***************************************************************************************************************************************/
     public function insertSTEnvioPostVentaDetalle()
     {
-        $json      = file_get_contents('php://input');
-        $data      = json_decode($json, true);
-        $count     = count($data['all_id_epostventa']);    
+        $json      =    file_get_contents('php://input');
+        $data      =    json_decode($json, true);
+        $count     =    count($data['all_id_epostventa']);    
         for ($i = 0; $i < $count; $i++)
         {
             $id_epostventa = $data['all_id_epostventa'][$i];
-            $response = $this->M_EnvioPostVenta->insertEnvioPostVentaDetalle($id_epostventa, 5, 'En servicio técnico');
+            $response = $this->M_EnvioPostVenta->insertEnvioPostVentaDetalle($id_epostventa, 5, 'En servicio técnico',1);
         }
+        echo json_encode($response);
+    }
+/***************************************************************************************************************************************/
+
+    public function getStatusByIdePostVenta()
+    {
+        $json      =    file_get_contents('php://input');
+        $data      =    json_decode($json, true);
+        $respponse =    $this->M_EnvioPostVenta->getStatusByIdePostVenta($data);
+        echo json_encode($respponse);
+    }
+/***************************************************************************************************************************************/
+    public function insertEnvioPostVentaDetalle()
+    {
+        $json                   =   file_get_contents('php://input');
+        $data                   =   json_decode($json, true);         
+        $id_epostventa          =   $data['id_epostventa'];
+        $id_estado              =   $data['id_estado'];
+        $descripccion_epdetalle =   $data['descripccion_epdetalle'];
+        $estadodesc_epdetalle   =   $data['estadodesc_epdetalle'];
+
+        $response = $this->M_EnvioPostVenta->insertEnvioPostVentaDetalle($id_epostventa, $id_estado, $descripccion_epdetalle, $estadodesc_epdetalle);
+
         echo json_encode($response);
     }
 /***************************************************************************************************************************************/

@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url']	= 'www.cyltransportesyservicios.pe';
-$config['base_url']	= 'http://localhost:8080/SYS_CYL/';
+$config['base_url']	= 'http://localhost:70/SYS_CYL/';
 
 /*
 |--------------------------------------------------------------------------
