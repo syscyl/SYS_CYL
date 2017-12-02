@@ -104,6 +104,7 @@ BEGIN
 		ep.fechac_epostventa,
 		ep.id_epostventa,
 		u.id_usuario,
+		ep.pathfile_epostventa,
 		(SELECT e.id_estado FROM envio_postventa_detalle epd 
 		INNER JOIN estado_envio e ON e.id_estado = epd.id_estado 
 		WHERE id_epdetalle = (SELECT MAX(id_epdetalle) FROM envio_postventa_detalle
@@ -120,8 +121,6 @@ BEGIN
 END
 ;;
 DELIMITER ;
-
--- 26/11/2017
 -- ----------------------------
 -- Procedure structure for SP_Insert_EnvioPostVentaDetalle
 -- ----------------------------
@@ -131,7 +130,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_Insert_EnvioPostVentaDetalle`(
 	IN `vid_epostventa` INT,
 	IN `vid_estado` INT,
 	IN `vdescripccion_epdetalle` TEXT,
-	IN `vestadodesc_epdetalle` BIT)
+	IN `vestadodesc_epdetalle` BIT,
+	IN `vpathfile_epostventa` VARCHAR(500)
+	)
 BEGIN
 
 	INSERT INTO envio_postventa_detalle (
@@ -146,6 +147,13 @@ BEGIN
 		vdescripccion_epdetalle,
 		vestadodesc_epdetalle,
 		CURRENT_TIMESTAMP);
+
+	IF vpathfile_epostventa != ''
+	THEN
+		UPDATE envio_postventa
+		SET pathfile_epostventa = vpathfile_epostventa
+		WHERE id_epostventa = vid_epostventa;
+	END IF;
 END
 ;;
 DELIMITER ;
@@ -175,4 +183,45 @@ END
 ;;
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS `SP_deleteEPostVenta`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_deleteEPostVenta`(
+	IN `vid_epostventa` INT)
+BEGIN
+	DELETE FROM envio_postventa WHERE id_epostventa = vid_epostventa;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for SP_getEnvioPostVentaByCodigo
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `SP_getEnvioPostVentaByCodigo`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_getEnvioPostVentaByCodigo`(IN `vcodigo_epostventa` TEXT)
+BEGIN
+	SELECT 
+		ep.codigo_epostventa,
+		ep.fechac_epostventa,
+		ep.id_epostventa,
+		u.id_usuario,
+		ep.pathfile_epostventa,
+		(SELECT e.id_estado FROM envio_postventa_detalle epd 
+		INNER JOIN estado_envio e ON e.id_estado = epd.id_estado 
+		WHERE id_epdetalle = (SELECT MAX(id_epdetalle) FROM envio_postventa_detalle
+		WHERE id_epostventa = ep.id_epostventa)) AS id_estado,
+
+		(SELECT e.nombre_estado FROM envio_postventa_detalle epd 
+		INNER JOIN estado_envio e ON e.id_estado = epd.id_estado 
+		WHERE id_epdetalle = (SELECT MAX(id_epdetalle) FROM envio_postventa_detalle
+		WHERE id_epostventa = ep.id_epostventa)) AS nombre_estado
+	FROM envio_postventa ep    
+	INNER JOIN usuario u ON u.id_usuario = ep.id_usuario
+	WHERE 
+		ep.codigo_epostventa = vcodigo_epostventa;
+END
+;;
+DELIMITER ;
+
+-- AGREGAR NUEVO CAMPO "pathfile_epostventa" EN LA TABLA "envio_postventa"
 -- AGREGAR NUEVO CAMPO "estadodesc_epdetalle" EN LA TABLA "envio_postventa_detalle"

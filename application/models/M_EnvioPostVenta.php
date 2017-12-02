@@ -40,9 +40,9 @@ class M_EnvioPostVenta extends CI_Model {
         } 
     }
 /***************************************************************************************************************************************/
-    public function insertEnvioPostVentaDetalle($id_epostventa, $id_estado, $descripccion_epdetalle, $estadodesc_epdetalle)
+    public function insertEnvioPostVentaDetalle($id_epostventa, $id_estado, $descripccion_epdetalle, $estadodesc_epdetalle, $pathfile_epostventa)
     {
-        $this->db->query("CALL SP_Insert_EnvioPostVentaDetalle($id_epostventa, $id_estado, '$descripccion_epdetalle', $estadodesc_epdetalle)");
+        $this->db->query("CALL SP_Insert_EnvioPostVentaDetalle($id_epostventa, $id_estado, '$descripccion_epdetalle', $estadodesc_epdetalle,'$pathfile_epostventa')");
     }
 /***************************************************************************************************************************************/
     public function getStatusByIdePostVenta($data)
@@ -51,6 +51,26 @@ class M_EnvioPostVenta extends CI_Model {
         $id_estado     = $data['id_estado'];
 
         $query=$this->db->query("CALL SP_getStatusByIdePostVenta($id_epostventa, $id_estado);");
+        if ($query->num_rows()>0)
+        {
+          return $query->result();
+        }
+        else
+        {
+          return false;
+        } 
+    }
+/***************************************************************************************************************************************/
+    public function deleteEPostVenta($id_epostventa)
+    {
+        $this->db->query("CALL SP_deleteEPostVenta('$id_epostventa')");
+        return true;
+    }
+/***************************************************************************************************************************************/
+    public function getEnvioPostVentaByCodigo($codigo_epostventa)
+    {      
+
+        $query=$this->db->query("CALL SP_getEnvioPostVentaByCodigo('$codigo_epostventa');");
         if ($query->num_rows()>0)
         {
           return $query->result();

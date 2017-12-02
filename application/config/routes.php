@@ -148,7 +148,7 @@ $route['DeleteFileManagerByFileID'] =	'C_FileManager/DeleteFileManagerByFileID';
 /************************************************************************************************************************************************************************/
 /**
  * @author Jean Carlos Sánchez Castromonte
- * @date_create 21/11/2017
+ * @date_create 02/12/2017
  */
 $route['envio_postventa']               =	'C_EnvioPostVenta/V_EnvioPostVenta';
 $route['getEnvioPostVenta']             =	'C_EnvioPostVenta/getEnvioPostVenta';
@@ -156,3 +156,7 @@ $route['getEnvioPostVentaById']         =	'C_EnvioPostVenta/getEnvioPostVentaByI
 $route['insertSTEnvioPostVentaDetalle'] =	'C_EnvioPostVenta/insertSTEnvioPostVentaDetalle';
 $route['getStatusByIdePostVenta']       =	'C_EnvioPostVenta/getStatusByIdePostVenta';
 $route['insertEnvioPostVentaDetalle']   =	'C_EnvioPostVenta/insertEnvioPostVentaDetalle';
+$route['uploadImageEPostVenta']   		=	'C_EnvioPostVenta/uploadImageEPostVenta';
+$route['deleteEPostVenta']   			=	'C_EnvioPostVenta/deleteEPostVenta';
+$route['seguimiento_EPostVenta']   		=	'C_EnvioPostVenta/seguimiento_EPostVenta';
+$route['getEnvioPostVentaByCodigo']     =	'C_EnvioPostVenta/getEnvioPostVentaByCodigo';

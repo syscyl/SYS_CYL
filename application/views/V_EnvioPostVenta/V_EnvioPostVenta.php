@@ -99,9 +99,9 @@
                             <table id="table-envio-estado" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>CÓDIGO POST-VENTA</th>
-                                <!--         <th><a href="javascript:void(0);" id="link-foto-guia">Nº DE ENTREGA</a></th> -->                      
-                                        <th>ESTADO ACTUAL</th>   
+                                        <th>CÓDIGO POST-VENTA</th>                                        
+                                        <th>ESTADO ACTUAL</th>
+                                        <th>IMAGEN</th>
                                     </tr>
                                 </thead> 
                                 <tbody>              
@@ -206,14 +206,15 @@
                                 </div>
                             </div>
                             <div sele="" class="form-group visible-in2">
-                                      <input type="radio" name="entregado" id="r1" value="Al Detalle"> Al Detalle<br>
+                                     <!--  <input type="radio" name="entregado" id="r1" value="Al Detalle"> Al Detalle<br>
                                       <input type="radio" name="entregado" id="r2" value="Por Bulto"> Por Bulto<br>
-                                      <input type="radio" name="entregado" id="r3" value="Por Etiqueta"> Por Etiqueta
+                                      <input type="radio" name="entregado" id="r3" value="Por Etiqueta"> Por Etiqueta -->
+                                      <span>Producto entregado al cliente.</span>
                             </div>
                             <div class="form-group visible-foto col-xs-6">
                                 <label class="form-label" >Foto de Guia </label>
                                 <div class="controls">
-                                   <input accept="image/*" id="file-fotoguia-lote" class="file" type="file" data-show-upload="false" data-show-caption="true" capture="camera"> 
+                                   <input accept="image/*" id="file-fotoguia-epostventa" class="file" type="file" data-show-upload="false" data-show-caption="true" capture="camera"> 
                                 </div>
                             </div>
                             <div style="margin-left:600px;" class="form-group visible-in3">
